@@ -1,6 +1,15 @@
-insert into Previsao(id, diaSemana, min, max, humidade, descricao, data, hora, latitude, longitude) values (1, 'Terça-Feira', 26.0, 31.9, 57, 'Sol. Pancadas de chuva a qualquer hora do dia.', '2020-03-31', '15:45', '27° 35 49 Sul', '48° 32 58 Oeste');
-insert into Previsao(id, diaSemana, min, max, humidade, descricao, data, hora, latitude, longitude) values (2, 'Quarta-Feira', 21.7, 28.7, 65, 'Sol com pancadas de chuva à tarde.', '2020-04-01', '07:00', '27° 35 49 Sul', '48° 32 58 Oeste');
-insert into Previsao(id, diaSemana, min, max, humidade, descricao, data, hora, latitude, longitude) values (3, 'Quinta-Feira', 20.1, 25.0, 64, 'Dia nublado, sem previsão de chuva.', '2020-04-02', '09:00', '27° 35 49 Sul', '48° 32 58 Oeste');
+insert into Dias_Semana(id, diaSemana) values (1, 'Domingo');
+insert into Dias_Semana(id, diaSemana) values (2, 'Segunda-Feira');
+insert into Dias_Semana(id, diaSemana) values (3, 'Terça-Feira');
+insert into Dias_Semana(id, diaSemana) values (4, 'Quarta-Feira');
+insert into Dias_Semana(id, diaSemana) values (5, 'Quinta-Feira');
+insert into Dias_Semana(id, diaSemana) values (6, 'Sexta-Feira');
+insert into Dias_Semana(id, diaSemana) values (7, 'Sábado');
 
+insert into Cidades(id, nome, latitude, longitude) values (1, 'São Paulo', -23.5489, -46.6388);
 
-insert into usuario (id, login, senha) values (1, 'admin@usjt.com', '123456')
+insert into Previsoes(id, id_diaSemana, tempMin, tempMax, umidade, descricao, id_cidade, dataHora) values (1, 1, 22.0, 31.9, 57, 'Sol. Pancadas de chuva a qualquer hora do dia e da noite. Muitas nuvens de manhã.', 1, CURRENT_TIMESTAMP());
+insert into Previsoes(id, id_diaSemana, tempMin, tempMax, umidade, descricao, id_cidade,dataHora) values (2, 2, 21.7, 28.7, 65, 'Sol e aumento de nuvens de manhã. Pancadas de chuva à tarde e à noite.', 1, CURRENT_TIMESTAMP());
+insert into Previsoes(id, id_diaSemana, tempMin, tempMax, umidade, descricao, id_cidade,dataHora) values (3, 3, 24.1, 29.0, 64, 'Sol e aumento de nuvens de manhã. Pancadas de chuva à tarde e à noite.', 1, CURRENT_TIMESTAMP());
+
+insert into usuarios (id, login, senha) values (1, 'admin', 'admin')

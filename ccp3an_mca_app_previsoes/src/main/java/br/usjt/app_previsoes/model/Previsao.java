@@ -1,9 +1,7 @@
 package br.usjt.app_previsoes.model;
 
 import java.io.Serializable;
-
-import java.sql.Date;
-import java.time.*;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,49 +9,44 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="Previsao")
+@Table(name = "Previsoes")
 public class Previsao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	//@Column(name="DIASEMANA")
-	//private String dia;
-	
-	@Column(name="MIN")
-	private Double min;
-	
-	@Column(name="MAX")
-	private Double max;
-	
-	@Column(name="HUMIDADE")
-	private int humidade;
 
-	@Column(name="DESCRICAO")
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_DIASEMANA")
+	private DiaSemana diaSemana;
+
+	@Column(name = "TEMPMIN")
+	private Double tempMin;
+
+	@Column(name = "TEMPMAX")
+	private Double tempMax;
+
+	@Column(name = "UMIDADE")
+	private int umidade;
+
+	@Column(name = "DESCRICAO")
 	private String descricao;
+
+	@Column(name = "DATAHORA")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataHora;
 	
-	@Column(name="DATA")
-	private Date data;
-	
-	@Column(name="HORA")
-	private String hora;
-	
-	@Column(name="LATITUDE")
-	private String latitude;
-	
-	@Column(name="LONGITUDE")
-	private String longitude;
-	
-	@OneToOne(optional=false)
-	@JoinColumn(name="id_dia")
-	private DiaSemana dia;
-	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "ID_CIDADE")
+	private Cidade cidade;
+
 	public Long getId() {
 		return id;
 	}
@@ -61,37 +54,37 @@ public class Previsao implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public DiaSemana getDia() {
-		return dia;
+
+	public DiaSemana getDiaSemana() {
+		return diaSemana;
 	}
 
-	public void setDia(DiaSemana dia) {
-		this.dia = dia;
+	public void setDiaSemana(DiaSemana diaSemana) {
+		this.diaSemana = diaSemana;
 	}
 
-	public Double getMin() {
-		return min;
+	public Double getTempMin() {
+		return tempMin;
 	}
 
-	public void setMin(Double min) {
-		this.min = min;
+	public void setTempMin(Double tempMin) {
+		this.tempMin = tempMin;
 	}
 
-	public Double getMax() {
-		return max;
+	public Double getTempMax() {
+		return tempMax;
 	}
 
-	public void setMax(Double max) {
-		this.max = max;
+	public void setTempMax(Double tempMax) {
+		this.tempMax = tempMax;
 	}
 
-	public int getHumidade() {
-		return humidade;
+	public int getUmidade() {
+		return umidade;
 	}
 
-	public void setHumidade(int humidade) {
-		this.humidade = humidade;
+	public void setUmidade(int umidade) {
+		this.umidade = umidade;
 	}
 
 	public String getDescricao() {
@@ -102,37 +95,19 @@ public class Previsao implements Serializable {
 		this.descricao = descricao;
 	}
 
-
-	public String getLatitude() {
-		return latitude;
+	public Date getDataHora() {
+		return dataHora;
 	}
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	public void setDataHora(Date dataHora) {
+		this.dataHora = dataHora;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	public Cidade getCidade() {
+		return cidade;
 	}
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public String getHora() {
-		return hora;
-	}
-
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-	
 }

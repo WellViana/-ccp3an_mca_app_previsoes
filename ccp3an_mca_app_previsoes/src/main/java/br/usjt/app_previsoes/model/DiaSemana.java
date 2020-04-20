@@ -10,18 +10,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="DiaSemana")
+@Table(name = "DiasSemana")
 public class DiaSemana implements Serializable {
 
-	@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String dia;
+	private static final long serialVersionUID = 1L;
 
-	public String getDia() {
-		return dia;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "DIASEMANA")
+	private String diaSemana;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setDia(String dia) {
-		this.dia = dia;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDiaSemana() {
+		return diaSemana;
+	}
+
+	public void setDia(String diaSemana) {
+		this.diaSemana = diaSemana;
 	}
 }
